@@ -1,5 +1,8 @@
 # UQLoft
 
+## Lewis' fork
+A Saturday night experiment in to how far down the prototype rabbit hole Flask can get us. 
+
 ## Initial ideas
 - Homepage - basic search box to search for a course (with autofill)
 - Each course has its own page - pull description and info for course, have a link to ECP, list of papers
