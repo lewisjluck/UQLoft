@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <style>
+        #register {
+            color: rgb(255, 255, 255, .9);
+        }
+    </style>
+    <form novalidate class="needs-validation" action="/register" method="post">
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="email">Email</label>
+            <input class="form-control" id="email" type="email" name="email" placeholder="Email" required>
+            <div class="invalid-feedback">
+              Please enter an email.
+            </div>
+          </div>
+          <div class="col-md-6">
+              <label for="username">Username</label>
+              <input id="username" autocomplete="off" class="form-control" name="username" placeholder="Username" type="text" required>
+              <div class="invalid-feedback">
+                Please enter a username.
+              </div>
+          </div>
+        </div>
+      </div>
+        <div class="form-group">
+            <label for="pasword">Password</label>
+            <input id="password" class="form-control" name="password" placeholder="Password" type="password" required>
+            <div class="invalid-feedback">
+              Please enter a password.
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirm" placeholder="Re-enter Password" type="password" required>
+            <div class="invalid-feedback">
+              Please re-enter your password.
+            </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-dark signup_button" type="submit">Sign up now!</button>
+        </div>
+        <div class="form-group">
+          <a href="/login">Or continue to the login page and sign in with Google!</a>
+        </div>
+    </form>
+    <script type="text/javascript">
+      /*
+      $(function() {
+        $("form").click(function() {
+          if (this.checkValidity() == false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          this.addClass("was-validated");
+        })
+
+      });
+      */
+      (function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+    </script>
+
+{% endblock %}

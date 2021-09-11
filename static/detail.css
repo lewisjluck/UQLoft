@@ -1,0 +1,89 @@
+main {
+  padding-top: 3vh;
+  text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, nav, a, button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-align: center;
+}
+
+strong {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-uq {
+  background-color: rgba(81, 36, 122, 1) !important;
+}
+
+.ecp-button {
+  height: 100%;
+  width: 40%;
+}
+
+.alert-link {
+  font-weight: 300;
+}
+
+#body-container {
+  max-width: 70vw;
+}
+
+.help-container {
+  text-align: left;
+}
+
+label {
+  text-align: left;
+  width: 100%;
+  padding-left: 0.5rem;
+}
+
+nav {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background-color: rgba(81, 36, 122, 1);
+}
+
+.course-name {
+  color: rgba(81, 36, 122, 1);
+}
+
+.course-description {
+  text-align: left;
+}
+
+.contract-input {
+  height: 4rem !important;
+  font-size: 18px !important;
+  padding-bottom: .3rem !important;
+}
+
+#search {
+  background-color: rgba(81, 36, 122, 1);;
+}
+
+.form-btn {
+  height: 64px !important;
+}
+
+.quantity {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.navbar-right {
+  margin-left: auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 30px;
+  text-align: center;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+}

@@ -1,0 +1,65 @@
+
+
+ {% extends 'layout.html' %}
+
+ {% block title %} {{description}} {% endblock %}
+
+ {% block body %}
+   <div class="d-block">
+     <h4>{{description}}</h4>
+   </div>
+   <div class="d-iblock" style="margin-bottom: 0.5%">
+     <a href="/solutions?paper={{ code }}" type="button" class="btn btn-dark bg-uq px-4">View Solutions</a>
+   </div>
+    <div class="row g-3 mb-3">
+        <div class="col-md-6 col-12">
+          <embed src="{{ file }}" style="width: 40vw; height: 70vh; " type="application/pdf">
+        </div>
+        <div class="col-md-6 col-12" >
+          <div class="overflow-auto" style="height: 70vh">
+            <form class="" action="/paper?det={{code}}" method="post">
+            {% for i in range(num) %}
+            <div class="row g-3 mb-3" >
+              <div class="col-md-8 col-12 pt-3">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label question-label">Question {{i + 1}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="A">A</label>
+                  <input class="form-check-input option" name="{{i + 1}}" type="radio" value="A">
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="B">B</label>
+                  <input class="form-check-input option" name="{{i + 1}}" type="radio" value="B">
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="C">C</label>
+                  <input class="form-check-input option" name="{{i + 1}}" type="radio" value="C">
+
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="D">D</label>
+                  <input class="form-check-input option" name="{{i + 1}}" type="radio" value="D">
+
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="E">E</label>
+                  <input class="form-check-input option" name="{{i + 1}}" type="radio" value="E">
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="row g-3 mb-3" >
+              <div class="col-md-3 col-0" ></div>
+              <div class="col-md-6 col-12">
+                <button type="submit" class="d-block btn btn-dark bg-uq px-4">Submit Answers</button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+
+ {% endblock %}

@@ -1,0 +1,14 @@
+
+
+ {% extends 'layout.html' %}
+
+ {% block title %} Solutions - {{description}} {% endblock %}
+
+ {% block body %}
+  <div class="overflow-auto" style="height: 80vh">
+    <h4>Solutions - {{description}}</h4>
+    {% for question in data %}
+    <p> Question {{question[2]}}. A:{{question[3]}} B:{{question[4]}} C:{{question[5]}} D:{{question[6]}} E: {{question[7]}}.
+    {% endfor %}
+  </div>
+ {% endblock %}

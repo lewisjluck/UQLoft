@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %} UQLoft {% endblock %}
+
+{% block body %}
+
+<div class="container justify-content-center mx-auto mw-70" id="body-container">
+    <img src="../static/logocolour.svg" alt="" style="height:20vh">
+    <h1 class="mx-auto"> Welcome to UQLoft!</h1>
+    <br>
+    <p class="mx-auto"> Crowd sourced and student made tool for finding (and checking!) past papers. Start off by searching your course below! </p>
+    <form class="mx-auto" action="/" method="post">
+      <div class="row g-3 mb-3 mx-auto">
+        <div class="col-md-10 col-12 form-floating">
+          <input autocomplete="off" type="text" placeholder="Course Code" class="form-control contract-input" id="course_code" name="course_code" value="" required>
+          <label for="client"> Enter your course code here... </label>
+        </div>
+        <div class="col-md-2 col-12">
+          <button type="submit" class="form-btn btn btn-dark block px-4 col-12" id="search">Search</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+<footer>
+  &copy Gambrel, 2021
+</footer>
+
+{% endblock %}

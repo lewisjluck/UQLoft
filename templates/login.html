@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block title %} Login {% endblock %}
+
+{% block body %}
+    <form novalidate class="needs-validation" action="/login" method="post">
+        <div class="form-group">
+            <label for="email-input">Email</label>
+            <input id="email-input" autocomplete="off" autofocus class="form-control" name="email" placeholder="Email" type="email" required>
+            <div class="invalid-feedback">
+              Please enter an email.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pssword-input">Password</label>
+            <input id="password-input" class="form-control" name="password" placeholder="Password" type="password" required>
+            <div class="invalid-feedback">
+              Please enter a password.
+            </div>
+        </div>
+
+        <div class="form-group" id="button_group">
+          <div class="form-row">
+            <div class="col-md-6">
+              <button class="btn btn-dark login_button" type="submit">Log In</button>
+            </div>
+            <div class="col-md-6">
+              <a href="/login/call"> <img class="login_button" src="../static/google_btn.png" alt=""> </a>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <a href="/register">Don't have an account? Register here.</a>
+        </div>
+    </form>
+    <script type="text/javascript">
+      /*
+      $(function() {
+        $("form").click(function() {
+          if (this.checkValidity() == false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          this.addClass("was-validated");
+        })
+
+      });
+      */
+      (function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+    </script>
+
+    <style>
+        #login {
+            color: rgb(255, 255, 255, .9);
+        }
+    </style>
+
+{% endblock %}

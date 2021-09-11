@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %} {{course_code.upper()}} {% endblock %}
+
+{% block body %}
+<div class="course-container mx-auto" id="body-container">
+  <div class="block">
+      <div class="d-inline-block">
+        <h1>{{course_code.upper()}}</h1>
+      </div>
+      <div class="d-inline-block">
+        <h4 class="course-name">{{course_name}}</h6>
+      </div>
+  </div>
+
+  <div class="row g-3 mb-3">
+
+      <div class=" col-12">
+        <p class="course-description"> {{course_description}} </p>
+      </div>
+
+  </div>
+
+  <div class="row g-3 mb-3">
+    {% for link, message in papers %}
+      <div class="col-md-3 col-12">
+        <a href="{{ link }}" type="button" class="form-btn btn btn-dark bg-uq block px-4">Final Exam {{ message }}</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="mx-auto">
+      <a href="{{ url }}" type="button" class="ecp-button btn btn-dark px-4">View ECP</a>
+  </div>
+
+</div>
+{% endblock %}
