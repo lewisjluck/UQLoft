@@ -46,16 +46,16 @@ def get_number_questions(course, year, semester):
 
 def get_ecp_details(course_code):
     url = "https://my.uq.edu.au/programs-courses/course.html?course_code=" + course_code.upper()
-    if course_code.lower() == "csse1001":
-        return (url, 'Introduction to Software Engineering (CSSE1001)', '''Introduction to Software Engineering through programming with particular focus
-on the fundamentals of computing & programming, using an exploratory problem-based approach. Building abstractions with procedures, data & objects; data modelling; desig
-ning, coding & debugging programs of increasing complexity''')
-    elif course_code.lower() == "csse2002":
-        return (url, "Programming in the Large (CSSE2002)", '''Working on large and complex software systems and ensuring those systems
-remain maintainable requires disciplined, individual practices. Software must be well-specified, well-impleme
-nted and well-tested. This course covers concepts and techniques in modern programming languages that help su
-pport good practice (such as OO concepts, genericity and exception handling) with specific application to fil
-e IO and GUIs in Java.''')
+#     if course_code.lower() == "csse1001":
+#         return (url, 'Introduction to Software Engineering (CSSE1001)', '''Introduction to Software Engineering through programming with particular focus
+# on the fundamentals of computing & programming, using an exploratory problem-based approach. Building abstractions with procedures, data & objects; data modelling; desig
+# ning, coding & debugging programs of increasing complexity''')
+#     elif course_code.lower() == "csse2002":
+#         return (url, "Programming in the Large (CSSE2002)", '''Working on large and complex software systems and ensuring those systems
+# remain maintainable requires disciplined, individual practices. Software must be well-specified, well-impleme
+# nted and well-tested. This course covers concepts and techniques in modern programming languages that help su
+# pport good practice (such as OO concepts, genericity and exception handling) with specific application to fil
+# e IO and GUIs in Java.''')
     session = HTMLSession()
     r = session.get(url)
     course_name = r.html.find('#course-title', first=True).text
