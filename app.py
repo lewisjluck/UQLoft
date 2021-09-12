@@ -79,31 +79,31 @@ def login():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     return render_template("register.html")
-#
-# @app.route("/is_course_valid", methods = ["GET", "POST"])
-# def is_course_valid():
-#     code = request.json["courseCode"]
-#     return jsonify(is_valid_course(code))
-#
-#
-# @app.route("/get_course_info", methods = ["GET", "POST"])
-# def get_papers():
-#     code = request.json["courseCode"]
-#     url, course_name, course_description = get_ecp_details(code)
-#     papers = get_paper_data(code)
-#     data = {
-#         "ecp_link" : url,
-#         "course_name": course_name,
-#         "course_description": course_description,
-#         "papers": papers
-#     }
-#     return jsonify(data)
-#
-# @app.route("/serve_paper", methods = ["GET", "POST"])
-# def serve_paper():
-#     file = "/papers/" + request.args.get("file")
-#     print(os.path.join(THIS_FOLDER, file))
-#     return send_file(THIS_FOLDER + file, mimetype="application/pdf", cache_timeout=0)
+
+@app.route("/is_course_valid", methods = ["GET", "POST"])
+def is_course_valid():
+    code = request.json["courseCode"]
+    return jsonify(is_valid_course(code))
+
+
+@app.route("/get_course_info", methods = ["GET", "POST"])
+def get_papers():
+    code = request.json["courseCode"]
+    url, course_name, course_description = get_ecp_details(code)
+    papers = get_paper_data(code)
+    data = {
+        "ecp_link" : url,
+        "course_name": course_name,
+        "course_description": course_description,
+        "papers": papers
+    }
+    return jsonify(data)
+
+@app.route("/serve_paper", methods = ["GET", "POST"])
+def serve_paper():
+    file = "/papers/" + request.args.get("file")
+    print(os.path.join(THIS_FOLDER, file))
+    return send_file(THIS_FOLDER + file, mimetype="application/pdf", cache_timeout=0)
 
 if __name__ == '__main__':
     os.environ['FLASK_ENV'] = 'development'
