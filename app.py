@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request, redirect
 import requests
 from flask_cors import CORS
-from helpers import is_valid_course, get_ecp_details, get_paper_data, get_number_questions, update_questions, get_data
+from helpers import is_valid_course, get_ecp_details, get_paper_data, get_number_questions, update_questions, get_data, add_new_paper
 import os
 
 THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
@@ -27,13 +27,27 @@ def homepage():
         else:
             return error("Hmmm, looks like we don't have that course yet!")
 
+@app.route("/add_paper", methods=["GET", "POST"])
+def add_paper():
+    if request.method == "GET":
+        return render_template("add_paper.html")
+    else:
+        code = request.form.get("course_code").lower()
+        year = request.form.get("year")
+        semester = request.form.get("semester")
+        number = request.form.get("number")
+        uploaded_file = request.files['paper']
+        if uploaded_file.filename != '':
+            uploaded_file.save(f"./static/papers/{code.lower()}_{year}_sem{semester}.pdf")
+        add_new_paper(code, year, semester, number)
+        return render_template("success.html")
+
 @app.route("/loft", methods = ["GET", "POST"])
 def loft():
     if request.method == "GET":
         code = request.args.get("course")
         url, course_name, course_description = get_ecp_details(code)
         print(course_name, course_description)
-        course_name = " ".join(course_name.split()[:-1])
         papers = get_paper_data(code)
         message_papers = [(f"/paper?det={code}_{paper['year']}_sem{paper['semester']}" ,f"{paper['year']} Semester {paper['semester']}") for paper in papers]
         print(message_papers)

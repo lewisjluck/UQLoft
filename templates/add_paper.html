@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %} Add Paper {% endblock %}
+
+{% block body %}
+<div class="course-container mx-auto" id="body-container">
+  <div class="d-block">
+    <h4>Add Paper</h4>
+  </div>
+  <form class="" action="/add_paper" method="post" enctype="multipart/form-data">
+    <div class="row g-3 mb-3">
+      <div class="col-md-3 form-floating">
+        <input autocomplete="off" type="text" placeholder="Course Code" class="form-control" name="course_code" value="" required>
+        <label for="course_code"> Course Code </label>
+      </div>
+      <div class="col-md-2 form-floating">
+        <input autocomplete="off" type="text" placeholder="Year" class="form-control" name="year" value="" required>
+        <label for="year"> Year </label>
+      </div>
+      <div class="col-md-1 form-floating">
+        <input autocomplete="off" type="text" placeholder="Semester" class="form-control" max="1" name="semester" value="" required>
+        <label for="semester"> Sem </label>
+      </div>
+      <div class="col-md-2 form-floating">
+        <input autocomplete="off" type="text" placeholder="Number" class="form-control" name="number" value="" required>
+        <label for="number"> No. Questions </label>
+      </div>
+      <div class="col-md-4 form-group">
+        <label for="paper">Upload your new paper as a .pdf file</label>
+        <input type="file" class="form-control-file" name="paper" id="paper" accept=".pdf">
+      </div>
+    </div>
+    <div class="row g-3 justify-content-md-center mb-3" >
+      <div class="col-md-3 col-12">
+        <button type="submit" class="d-block btn btn-dark bg-uq px-4">Submit Answers</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<style>
+  #add-paper {
+    color: rgba(255,255,255,0.9);
+  }
+</style>
+{% endblock %}

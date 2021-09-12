@@ -21,7 +21,7 @@ def close_db(db):
 #Check if any papers have this course title
 def is_valid_course(query_course_code):
     db = open_db()
-    papers =  db.execute("SELECT * FROM papers WHERE course_code LIKE ?", ("%" + query_course_code.lower() + "%",)).fetchall()
+    papers =  db.execute("SELECT * FROM papers WHERE course_code=?", (query_course_code.lower(),)).fetchall()
     if papers:
         return True
     else:
@@ -30,7 +30,7 @@ def is_valid_course(query_course_code):
 #Get paper with this course title
 def get_paper_data(query_course_code):
     db = open_db()
-    papers =  db.execute("SELECT * FROM papers WHERE course_code LIKE ?", ("%" + query_course_code.lower() + "%",)).fetchall()
+    papers =  db.execute("SELECT * FROM papers WHERE course_code=?", (query_course_code.lower(),)).fetchall()
     paper_list = []
     for paper in papers:
         paper_list.append({"course": paper[1], "year": paper[2], "semester": paper[3]})
@@ -39,7 +39,7 @@ def get_paper_data(query_course_code):
 def get_number_questions(course, year, semester):
     db = open_db()
     matches = []
-    papers =  db.execute("SELECT * FROM papers WHERE course_code LIKE ?", ("%" + course.lower() + "%",)).fetchall()
+    papers =  db.execute("SELECT * FROM papers WHERE course_code=?", (course.lower(),)).fetchall()
     for paper in papers:
         if paper[1] == course and paper[2] == year and paper[3] == semester:
             return paper[4]
@@ -59,6 +59,7 @@ def get_ecp_details(course_code):
     session = HTMLSession()
     r = session.get(url)
     course_name = r.html.find('#course-title', first=True).text
+    course_name = " ".join(course_name.split()[:-1])
     course_description = r.html.find('#course-summary', first=True).text
     return (url, course_name, course_description)
 
@@ -78,6 +79,12 @@ def update_questions(paper_code, data):
             if answer:
                 update[ord(answer) - 65] += 1
             db.execute("INSERT INTO questions (paper_code, question_num, a, b, c, d, e) VALUES (?, ?, ?, ?, ?, ?, ?)", (paper_code, i+1, *update))
+    db.commit()
+    close_db(db)
+
+def add_new_paper(paper_code, year, semester, number):
+    db = open_db()
+    db.execute("INSERT INTO papers (course_code, year, semester, question_number) VALUES (?, ?, ?, ?)", (paper_code, year, semester, number))
     db.commit()
     close_db(db)
 
